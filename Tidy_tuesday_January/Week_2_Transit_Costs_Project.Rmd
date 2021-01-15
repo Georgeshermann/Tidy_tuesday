@@ -8,3 +8,50 @@ output: html_notebook
 > Why do transit-infrastructure projects in New York cost 20 times more on a per kilometer basis than in Seoul? We investigate this question across hundreds of transit projects from around the world. We have created a database that spans more than 50 countries and totals more than 11,000 km of urban rail built since the late 1990s. We will also examine this question in greater detail by carrying out six in-depth case studies that take a closer look at unique considerations and variables that aren’t easily quantified, like project management, governance, and site conditions.
 > 
 > The goal of this work is to figure out how to deliver more high-capacity transit projects for a fraction of the cost in countries like the United States. Additionally, we hope that our site will be a useful resource for elected officials, planners, researchers, journalists, advocates, and others interested in contextualizing transit-infrastructure costs and fighting for better projects.
+
+Load the dataset
+```{r}
+library("tidyverse")
+library("skimr")
+library("esquisse")
+```
+
+```{r}
+transit <-  read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-05/transit_cost.csv')
+transit
+
+```
+I have notice that the last rows of the dataset is a summary (AVG, MEDIAN, STD) of numeric columns. Let's drop those rows.  
+
+```{r echo=TRUE}
+transit_1 <- transit %>% 
+  drop_na(country)
+```
+
+```{r}
+transit_1
+```
+
+Now, let's get a quick summary of our data set. 
+```{r}
+transit_1 %>% 
+  skim()
+```
+
+### A few observations made from the result of skimr
+- There are many columns which won't be useful for our analysis. (e, rr, source1, source2, cost, currency, year)
+- The columns start_year and end_year are listed as characters when they should be dates.   
+- Some columns needs to be rename so that we don't get confused ()
+
+```{r}
+
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
